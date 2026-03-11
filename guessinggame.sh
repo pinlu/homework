@@ -1,33 +1,24 @@
-#!/usr/bin/env bash
-# File: guessinggame.sh
-# Description: A game to guess the number of files in the current directory.
-
-# 建立一個 function 來取得當前目錄的檔案數量
+#!/bin/bash
+# Guessing Game - Guess the number of files in the current directory
 function get_file_count {
-  local count=$(ls -1 | wc -l)
-  echo $count
-}
-
-# 初始化變數
-correct_count=$(get_file_count)
-guess=-1
-
-echo "Welcome to the Guessing Game!"
-echo "How many files are in the current directory?"
-
-# 使用 while loop 讓使用者持續猜測，直到猜對為止
-while [[ $guess -ne $correct_count ]]
-do
-  read -p "Please enter your guess: " guess
-
-  # 使用 if 判斷式來提示太大、太小或正確
-  if [[ $guess -lt $correct_count ]]
-  then
-    echo "Your guess is too low. Try again!"
-  elif [[ $guess -gt $correct_count ]]
-  then
-    echo "Your guess is too high. Try again!"
-  else
-    echo "Congratulations! You guessed the correct number of files: $correct_count"
-  fi
+local count=$(1s -1 | wc -1) echo $count
+function prompt_user {
+echo "How many files are in the current directory?" read guess
+function check_guess {
+local guess=$1
+local actual=$2
+if Il $guess -eq $actual ]]; then
+return 0
+elif [l $guess -lt $actual ]]; then echo "Your guess is too low. Try again!" return 1
+else
+echo "Your guess is too high. Try again!" return 1
+fi
+# Main program
+file_count=$(get_file_count)
+prompt_user
+while [l $guess -ne $file_count ]] do
+if check_guess $guess $file_count; then
+break
+fi read guess
 done
+echo "Congratulations! You guessed the correct number of files!"
