@@ -1,5 +1,5 @@
 # Guessing Game Project
-
-**Make execution time:** Sun Mar  8 12:34:13 CST 2026
-
-**Number of lines in guessinggame.sh:** 33
+**Date and Time:** Wed 11 Mar 2026 01:49:18 IST
+**Number of lines in guessinggame.sh:** 42
+## Description
+This is a simple Bash guessing game where the user tries to guess the number of files in the current directory.
